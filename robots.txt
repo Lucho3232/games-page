@@ -1,0 +1,20 @@
+User-agent: *
+
+# Permitir todo el contenido público
+Allow: /
+
+# Bloquear carpetas técnicas internas
+Disallow: /includes/
+Disallow: /config/
+Disallow: /core/
+Disallow: /vendor/
+Disallow: /cache/
+Disallow: /logs/
+Disallow: /tmp/
+
+# Bloquear archivos sensibles internos
+Disallow: /*.inc$
+Disallow: /*.log$
+
+# Sitemap
+Sitemap: https://lovegaminghub.com/sitemap.xml
