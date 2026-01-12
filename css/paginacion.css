@@ -1,0 +1,113 @@
+.discover-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 28px;
+  position: relative;
+  border: 1px solid #ddd;
+}
+
+.discover-link {
+  display: flex;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  padding: 16px;
+}
+
+.discover-image {
+  flex-shrink: 0;
+  width: 260px;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.discover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.discover-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.discover-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  color: #0f172a;
+  margin-top: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.discover-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.discover-author {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.discover-author img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+.discover-time {
+  color: #64748b;
+}
+
+/* HOVER */
+.discover-card:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+
+}
+
+.discover-card:hover .discover-title {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .discover-link {
+    flex-direction: column;
+  }
+
+  .discover-image {
+    width: 100%;
+    height: 190px;
+  }
+}
+.new-badge {
+background: linear-gradient(135deg, #6a11cb, #2575fc);
+color: #fff;
+font-size: 11px;
+font-weight: 700;
+position: absolute;
+left: 0;
+top: 0;
+padding: 3px 7px;
+border-radius: 6px;
+margin-left: 10px;
+text-transform: uppercase;
+box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}

@@ -1,0 +1,130 @@
+.slider { position: relative; max-width: 1200px; margin: 40px auto; overflow: hidden; }
+    .slider__viewport { overflow: hidden; cursor: grab; }
+    .slider.is-dragging .slider__viewport { cursor: grabbing; }
+
+    .slider__track { 
+      display: flex; 
+      will-change: transform;
+    }
+
+    .slide { 
+      flex: 0 0 100%; 
+      padding: 10px; 
+    }
+
+    .slide a { 
+      display: block; 
+      background: #fff; 
+      border-radius: 8px; 
+      text-decoration: none; 
+      color: inherit;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-drag: none;
+      transition: transform 0.2s;
+    }
+    
+    .slide a:active { transform: scale(0.98); }
+    .slide time {
+        font-size: 12px;
+    }
+    .slide img { width: 100%; display: block; pointer-events: none;max-height: 130px;object-fit: cover; }
+
+    .slide-content { padding: 15px; }
+    /* Limitar el título a 2 líneas */
+.slide h2 { 
+    font-size: 1.1rem; 
+    margin: 5px 0;
+    /* --- Nuevo código --- */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Número de líneas */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    min-height: 2.6rem; /* Mantiene la altura aunque el título sea de 1 sola línea */
+}
+
+/* Limitar la descripción a 2 líneas */
+.slide p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+    /* --- Nuevo código --- */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Número de líneas */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    color: #666;
+}
+
+    /* Responsive */
+    @media (min-width: 600px) { .slide { flex: 0 0 50%; } }
+    @media (min-width: 1024px) { .slide { flex: 0 0 33.333%; } }
+
+    /* Navegación */
+    .nav-slider { position: absolute; top: 50%; transform: translateY(-50%); background: #000; color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10; opacity: 0.6; }
+    .nav-slider:hover { opacity: 1; }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .dots { display: flex; justify-content: center; margin-top: 15px; gap: 8px; }
+    .dots button { width: 10px; height: 10px; border-radius: 50%; border: none; background: #ccc; cursor: pointer; }
+    .dots button.active { background: #000; }
+    .slider__track { 
+    display: flex; 
+    will-change: transform;
+    /* FIX MOBILE: Permite scroll vertical de la página pero captura el horizontal */
+    touch-action: pan-y; 
+}
+
+/* Importante para que el scroll del móvil no se bloquee pero el slider funcione */
+.slider__track {
+    display: flex;
+    touch-action: pan-y; /* Permite scroll vertical nativo, captura horizontal */
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.slide img {
+    pointer-events: none; /* Evita que la imagen sea "arrastrada" por el navegador */
+    user-select: none;
+}
+
+/* Cuando solo hay 1 artículo o pocos, centramos y ocultamos flechas */
+.slider.is-static .nav-slider,
+.slider.is-static .dots {
+    display: none !important;
+}
+
+.slider.is-static .slider__track {
+    transform: none !important;
+    justify-content: center;
+}
+/* Si PHP puso la clase has-1-items, el hijo (.slide) ocupa el 100% */
+.slider.has-1-items .slide {
+    flex: 0 0 100% !important;
+}
+
+/* Si PHP puso la clase has-2-items, el hijo (.slide) ocupa el 50% */
+.slider.has-2-items .slide {
+    flex: 0 0 50% !important;
+}
+
+/* Si hay 2 artículos, ocupan 50% solo en pantallas medianas/grandes */
+@media (min-width: 600px) {
+    .slider.has-2-items .slide {
+        flex: 0 0 50% !important;
+    }
+}
+
+/* En móviles (menos de 600px), siempre 100% para que el slider no se rompa */
+@media (max-width: 599px) {
+    .slider.has-2-items .slide {
+        flex: 0 0 100% !important;
+    }
+}
+
+/* Ajuste de seguridad para el track */
+.slider__track {
+    display: flex;
+    align-items: stretch;
+}
